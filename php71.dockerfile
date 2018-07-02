@@ -1,5 +1,5 @@
 FROM alpine:3.7
-LABEL Maintainer="Michael Bunch <mbunch@learninghouse.com>"
+LABEL Maintainer="Michael Bunch <michael@caeynastudios.com>"
 
 # Install Nginx, PHP-FPM, and Supervisor
 RUN apk --no-cache add \
@@ -7,6 +7,8 @@ RUN apk --no-cache add \
     supervisor \
     php7 \
     php7-ctype \
+    php7-curl \
+    php7-dom \
     php7-fpm \
     php7-json \
     php7-mbstring \
@@ -42,8 +44,7 @@ COPY configs/laravel.php.conf /etc/php7/php-fpm.d/www.conf
 COPY scripts/install_composer.sh /root
 RUN chmod 755 /root/install_composer.sh && \
     cd /root && \
-    ./install_composer.sh && \
-    mv /root/composer.phar /usr/sbin/composer
+    ./install_composer.sh
 
 # Available Ports
 EXPOSE 80

@@ -1,5 +1,5 @@
-FROM alpine:3.7
-LABEL Maintainer="Michael Bunch <mbunch@learninghouse.com>"
+FROM alpine:3.8
+LABEL Maintainer="Michael Bunch <michael@caeynastudios.com>"
 
 # Install Nginx, PHP-FPM, and Supervisor
 RUN apk --no-cache add \
@@ -7,6 +7,8 @@ RUN apk --no-cache add \
     supervisor \
     php7 \
     php7-ctype \
+    php7-curl \
+    php7-dom \
     php7-fpm \
     php7-json \
     php7-mbstring \
@@ -16,7 +18,6 @@ RUN apk --no-cache add \
     php7-phar \
     php7-session \
     php7-tokenizer \
-    php7-xdebug \
     php7-zip
 
 # Setup application user/group/cwd
@@ -34,9 +35,8 @@ COPY configs/laravel.nginx.conf /etc/nginx/conf.d/default.conf
 
 # Configure PHP-FPM
 RUN touch /var/run/php-fpm.pid && \
-    chown -R www:www /var/run/php-fpm.pid && \
-    touch /tmp/xdebug.log
-COPY configs/php-dev.ini /etc/php7/php.ini
+    chown -R www:www /var/run/php-fpm.pid
+COPY configs/php.ini /etc/php7/php.ini
 COPY configs/php-fpm.conf /etc/php7/php-fpm.conf
 COPY configs/laravel.php.conf /etc/php7/php-fpm.d/www.conf
 
