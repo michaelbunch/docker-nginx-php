@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:edge
 LABEL Maintainer="Michael Bunch <michael@caeynastudios.com>"
 
 # Install Nginx, PHP-FPM, and Supervisor
