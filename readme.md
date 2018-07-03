@@ -9,7 +9,11 @@
 - Nginx 1.12
 - Supervisor 3.3
 
-#### With Xdebug support (`php71-dev.dockerfile`)
+#### With Development Tools (`php71-dev.dockerfile`)
+
+- Xdebug
+- PHPStan
+- PHP Code Sniffer
 
 #### With Blackfire.io support (`php71-profiler.dockerfile`)
 

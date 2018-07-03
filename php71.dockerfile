@@ -45,6 +45,7 @@ COPY scripts/install_composer.sh /root
 RUN chmod 755 /root/install_composer.sh && \
     cd /root && \
     ./install_composer.sh
+ENV PATH="/root/.composer/vendor/bin:${PATH}"
 
 # Available Ports
 EXPOSE 80
