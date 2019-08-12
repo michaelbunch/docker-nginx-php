@@ -15,7 +15,7 @@ RUN apk add --update --no-cache \
 RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 # Install Composer
-ADD containers/scripts/install_composer.sh /usr/local/bin/install_composer.sh
+ADD scripts/install_composer.sh /usr/local/bin/install_composer.sh
 RUN chmod 755 /usr/local/bin/install_composer.sh && \
     /usr/local/bin/install_composer.sh && \
     mv composer.phar /usr/local/bin/composer

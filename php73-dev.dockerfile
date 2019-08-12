@@ -24,7 +24,7 @@ RUN apk add --update --no-cache $PHPIZE_DEPS && \
     echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # Install Composer
-ADD containers/scripts/install_composer.sh /usr/local/bin/install_composer.sh
+ADD scripts/install_composer.sh /usr/local/bin/install_composer.sh
 RUN chmod 755 /usr/local/bin/install_composer.sh && \
     /usr/local/bin/install_composer.sh && \
     mv composer.phar /usr/local/bin/composer
